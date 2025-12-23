@@ -15,20 +15,32 @@
         /* --- RESET --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        /* SCROLL SNAP SETUP */
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg);
             color: var(--ink);
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            overflow-x: hidden; 
             width: 100%;
+            margin: 0;
         }
-
-        body.no-scroll { overflow: hidden; }
 
         a { text-decoration: none; color: inherit; cursor: pointer; }
         ul { list-style: none; }
+
+        /* --- LAYOUT UTILS --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
 
         /* --- TYPOGRAPHY --- */
         h1 {
@@ -46,19 +58,10 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-bottom: 10px; 
+            margin-bottom: 30px; 
             display: inline-block;
             border-bottom: 1px solid var(--ink);
             padding-bottom: 5px;
-        }
-
-        /* Subtitle instruction style */
-        .section-instruction {
-            display: block;
-            font-size: 13px;
-            color: #888;
-            margin-bottom: 30px;
-            font-style: italic;
         }
 
         p {
@@ -77,28 +80,39 @@
             font-weight: 600;
         }
 
-        /* --- LAYOUT UTILS --- */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        .spacer-lg { height: 150px; }
-        .spacer-md { height: 80px; }
-
-        /* --- HEADER --- */
+        /* --- HEADER (FIXED) --- */
         nav {
-            padding: 40px 0;
+            position: fixed; 
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1400px;
+            padding: 30px 40px; 
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            border-bottom: 1px solid var(--line);
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--bg) 80%, rgba(242, 240, 235, 0)); 
+            pointer-events: none; 
         }
-        .contact-stack a { transition: color 0.3s; font-weight: 600; }
-        .contact-stack a:hover { color: #888; }
+        nav a { pointer-events: all; }
+        
+        /* --- FULL SCREEN SECTIONS --- */
+        section, footer {
+            min-height: 100vh;      
+            width: 100%;
+            scroll-snap-align: start; 
+            scroll-snap-stop: always; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding-top: 80px;      
+            padding-bottom: 40px;
+        }
 
         /* --- HERO --- */
-        .hero { padding-top: 100px; padding-bottom: 80px; }
         .hero-statement {
             font-size: clamp(20px, 4vw, 28px);
             line-height: 1.3;
@@ -107,26 +121,26 @@
             color: var(--ink);
         }
 
-        /* --- KINETIC SHUTTERS (CORE CAPABILITIES) --- */
-        /* FIXED: No overlapping, responsive font scaling */
+        /* --- KINETIC SHUTTERS --- */
         .capabilities-section {
-            padding: 0; 
-            height: 600px; /* Fixed height for desktop impact */
-            border-top: 1px solid var(--ink);
-            border-bottom: 1px solid var(--ink);
-            margin: 60px 0;
-            overflow: hidden;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: 450px; 
+            flex: none; 
         }
 
         .shutter-container {
+            flex: 1;
             display: flex;
             width: 100%;
-            height: 100%;
+            border-top: 1px solid var(--ink);
+            border-bottom: 1px solid var(--ink);
         }
 
         .shutter-item {
             position: relative;
-            flex: 1; /* All start equal width */
+            flex: 1; 
             border-right: 1px solid var(--ink);
             background-color: var(--bg);
             transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
@@ -135,18 +149,12 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            /* REDUCED PADDING: Gives text more room */
             padding: 40px 20px; 
         }
 
         .shutter-item:last-child { border-right: none; }
 
-        .shutter-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            /* Removed min-width to prevent overflow */
-        }
+        .shutter-content { position: relative; z-index: 2; width: 100%; }
 
         .shutter-num {
             font-family: 'Courier New', monospace;
@@ -155,11 +163,10 @@
             display: block;
             color: #888;
             transition: color 0.3s;
-            white-space: nowrap; /* Keep number on one line */
+            white-space: nowrap; 
         }
 
         .shutter-title {
-            /* FIXED: Smaller base font size that fits in the compressed column */
             font-size: clamp(22px, 2vw, 32px);
             font-weight: 700;
             text-transform: uppercase;
@@ -169,8 +176,6 @@
             color: var(--ink);
             transition: all 0.5s ease;
             transform-origin: bottom left;
-            
-            /* FIXED: Ensure text wraps instead of clips */
             word-wrap: break-word;
             overflow-wrap: break-word;
             hyphens: auto; 
@@ -178,7 +183,7 @@
         }
 
         .shutter-desc {
-            font-size: 16px; /* Slightly smaller for better fit */
+            font-size: 16px; 
             line-height: 1.5;
             color: var(--bg); 
             opacity: 0;
@@ -189,24 +194,18 @@
             transition: all 0.5s ease 0.1s;
         }
 
-        /* DESKTOP HOVER INTERACTION */
         @media (min-width: 901px) {
-            .shutter-container:hover .shutter-item { opacity: 0.4; } /* Dim others */
-            
+            .shutter-container:hover .shutter-item { opacity: 0.4; } 
             .shutter-container .shutter-item:hover {
-                flex: 3; /* Grow Active Item significantly */
+                flex: 3; 
                 background-color: var(--ink); 
                 opacity: 1;
             }
-
             .shutter-item:hover .shutter-num { color: #666; }
-            
-            /* FIXED: Font grows BIG only when there is room (on hover) */
             .shutter-item:hover .shutter-title { 
                 color: var(--bg); 
                 font-size: clamp(32px, 4vw, 52px); 
             }
-            
             .shutter-item:hover .shutter-desc {
                 opacity: 1;
                 height: auto;
@@ -217,30 +216,31 @@
         }
 
         /* --- HISTORY --- */
-        .timeline-container { border-top: 1px solid var(--line); }
+        .timeline-container { border-top: 1px solid var(--line); width: 100%; }
         .job-item { border-bottom: 1px solid var(--line); transition: 0.4s ease; cursor: pointer; }
         .job-item:hover { background-color: #EBE9E4; }
         .job-item.active { background-color: #fff; }
-        .job-header { padding: 40px 0; display: grid; grid-template-columns: 150px 1fr auto; align-items: baseline; }
+        .job-header { padding: 30px 0; display: grid; grid-template-columns: 150px 1fr auto; align-items: baseline; }
         .job-company { font-size: clamp(22px, 3vw, 28px); font-weight: 600; letter-spacing: -0.5px; }
         .job-role { font-size: 16px; color: #666; margin-top: 4px; }
         .indicator { font-size: 24px; font-weight: 300; }
         .job-details { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
-        .job-item.active .job-details { max-height: 1000px; opacity: 1; padding-bottom: 60px; }
+        .job-item.active .job-details { max-height: 60vh; overflow-y: auto; opacity: 1; padding-bottom: 40px; } 
         .detail-grid { display: grid; grid-template-columns: 150px 1fr; gap: 20px; }
         .detail-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .detail-block h4 { font-size: 12px; text-transform: uppercase; margin-bottom: 15px; color: #999; letter-spacing: 1px; }
         .detail-block ul li { position: relative; padding-left: 15px; margin-bottom: 10px; font-size: 16px; color: #444; }
         .detail-block ul li::before { content: "•"; position: absolute; left: 0; color: #999; }
 
-        /* --- COMMAND DECK (VIDEO SECTION) --- */
+        /* --- COMMAND DECK --- */
         .command-deck {
             display: grid;
-            grid-template-columns: 1fr 1.5fr; 
+            grid-template-columns: 1fr 2.5fr; 
             gap: 60px;
-            align-items: start;
+            align-items: center;
             border-top: 1px solid var(--line);
-            padding-top: 60px;
+            padding-top: 40px;
+            width: 100%;
         }
         .command-list { display: flex; flex-direction: column; }
         .command-item {
@@ -282,11 +282,12 @@
 
         /* Video Viewport */
         .viewport-container {
-            position: sticky;
-            top: 40px;
-            width: 100%;
-            height: auto;
-            max-height: 80vh; 
+            position: relative;
+            aspect-ratio: 9/16; 
+            max-height: 75vh;
+            width: auto;
+            max-width: 100%;
+            margin: 0 auto; 
             background-color: #000;
             border-radius: 4px;
             overflow: hidden;
@@ -306,76 +307,28 @@
         .viewport-video {
             width: 100%;
             height: 100%;
-            object-fit: contain; 
+            object-fit: cover; 
             display: none;
         }
         .viewport-video.active { display: block; }
-
-        /* Volume Toggle */
         .volume-toggle {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 10; 
-            background: transparent;
-            border: none;
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+            position: absolute; bottom: 20px; left: 20px; z-index: 10; 
+            background: transparent; border: none; color: #fff; width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
             transition: transform 0.2s ease;
         }
         .volume-toggle:hover { transform: scale(1.1); }
-        .volume-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-            filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
-        }
+        .volume-icon svg { width: 24px; height: 24px; fill: currentColor; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8)); }
 
-        /* --- VIDEO MODAL --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
-        .modal-content {
-            position: relative;
-            width: auto; height: auto;
-            max-width: 90vw; max-height: 90vh;
-        }
-        .modal-video-player { width: 100%; height: 100%; max-height: 90vh; display: block; }
-        .modal-close {
-            position: absolute; top: -40px; right: 0;
-            color: #fff; font-size: 40px;
-            cursor: pointer; line-height: 1;
-        }
-
-        /* --- IMMERSIVE CREDENTIALS ROW --- */
+        /* --- CREDENTIALS --- */
         .creds-container {
             position: relative;
             width: 100%;
-            height: 400px;
-            margin-top: 40px;
+            flex: 1; 
+            margin-top: 20px;
+            max-height: 500px; 
         }
-
-        .creds-row {
-            display: flex;
-            gap: 15px;
-            width: 100%;
-            height: 100%;
-        }
-
+        .creds-row { display: flex; gap: 15px; width: 100%; height: 100%; }
         .cred-card {
             flex: 1; 
             background-color: #FFF;
@@ -389,198 +342,160 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-
         .cred-card:hover {
             border-color: var(--ink);
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
-
-        .cred-num {
-            font-family: 'Courier New', monospace;
-            font-size: 14px; color: #999;
-            margin-bottom: 20px;
-        }
-
+        .cred-num { font-family: 'Courier New', monospace; font-size: 14px; color: #999; margin-bottom: 20px; }
         .cred-title {
             font-size: clamp(15px, 1.5vw, 22px); 
-            font-weight: 700;
-            text-transform: uppercase;
-            line-height: 1.1;
-            color: var(--ink);
-            transition: all 0.4s ease;
-            hyphens: auto; 
-            -webkit-hyphens: auto;
-            word-wrap: break-word;
+            font-weight: 700; text-transform: uppercase; line-height: 1.1; color: var(--ink);
+            transition: all 0.4s ease; hyphens: auto; word-wrap: break-word;
         }
-
         .cred-icon {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 24px;
-            color: var(--line);
-            font-weight: 300;
-            transition: all 0.3s ease;
+            position: absolute; bottom: 20px; right: 20px; font-size: 24px; color: var(--line);
+            font-weight: 300; transition: all 0.3s ease;
         }
-
-        .cred-card:hover .cred-icon {
-            color: var(--ink);
-            transform: scale(1.2);
-        }
-
+        .cred-card:hover .cred-icon { color: var(--ink); transform: scale(1.2); }
+        
         /* EXPANDED CRED STATE */
         .cred-card.expanded {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 20;
-            background-color: var(--bg);
-            border: 1px solid var(--ink);
-            padding: 60px; 
-            cursor: default;
-            transform: translateY(0);
-            justify-content: flex-start;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 20;
+            background-color: var(--bg); border: 1px solid var(--ink); padding: 60px; 
+            cursor: default; transform: translateY(0); justify-content: flex-start;
         }
-
         .cred-card.expanded .cred-title {
-            font-size: clamp(32px, 4vw, 48px);
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--line);
-            margin-top: 20px; 
+            font-size: clamp(32px, 4vw, 48px); margin-bottom: 30px; padding-bottom: 20px;
+            border-bottom: 1px solid var(--line); margin-top: 20px; 
         }
-
         .cred-card.expanded .cred-icon { display: none; }
-
         .cred-desc {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            opacity: 0;
-            display: none;
-            transform: translateY(20px);
+            font-size: 16px; line-height: 1.6; color: #333; max-width: 800px;
+            opacity: 0; display: none; transform: translateY(20px);
             transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
         }
-
-        .cred-card.expanded .cred-desc {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .cred-card.expanded .cred-desc { display: block; opacity: 1; transform: translateY(0); }
         .cred-close {
-            position: absolute;
-            top: 30px; right: 30px;
-            font-size: 40px;
-            line-height: 1;
-            cursor: pointer;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            color: var(--ink);
-            z-index: 30;
+            position: absolute; top: 30px; right: 30px; font-size: 40px; line-height: 1;
+            cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            color: var(--ink); z-index: 30;
         }
-        
-        .cred-card.expanded .cred-close {
-            opacity: 1;
-            pointer-events: all;
+        .cred-card.expanded .cred-close { opacity: 1; pointer-events: all; }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-content { position: relative; width: auto; height: auto; max-width: 90vw; max-height: 90vh; }
+        .modal-video-player { width: 100%; height: 100%; max-height: 90vh; display: block; }
+        .modal-close { position: absolute; top: -40px; right: 0; color: #fff; font-size: 40px; cursor: pointer; line-height: 1; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
+            nav { padding: 20px 40px; } 
+            
+            /* Center All Content on Mobile */
+            section { 
+                padding-top: 80px; 
+                justify-content: center; /* FIX: Centers history and other content */
+                height: auto; 
+                min-height: 100vh; 
+            }
+            
+            .hero { justify-content: center; height: 100vh; }
             .hero-statement { max-width: 100%; }
             .job-header { grid-template-columns: 1fr auto; gap: 5px; }
             .job-header .meta { grid-column: 1 / -1; margin-bottom: 8px; }
             .detail-grid { grid-template-columns: 1fr; }
             .detail-content { grid-template-columns: 1fr; gap: 30px; }
             
-            /* KINETIC SHUTTERS MOBILE */
-            .capabilities-section {
+            /* KINETIC SHUTTERS MOBILE (FIXED LAYOUT) */
+            /* Ensure section fills screen */
+            .capabilities-section { 
+                height: calc(100vh - 160px); /* Use available vertical space minus padding */
+                min-height: 500px;
+                max-height: 800px;
+            }
+            .shutter-container { 
+                flex-direction: column; 
+                border-top: 1px solid var(--line); 
+                border-bottom: 1px solid var(--line); 
+                height: 100%;
+            }
+            .shutter-item { 
+                width: 100%; 
+                /* Use flex-grow to share space evenly */
+                flex: 1;
                 height: auto;
-                margin: 40px 0;
+                border-right: none; 
+                border-bottom: 1px solid var(--line); 
+                padding: 20px; 
+                justify-content: center; 
             }
-
-            .shutter-container {
-                flex-direction: column;
-            }
-
-            .shutter-item {
-                width: 100%;
-                height: 100px; /* Collapsed height */
-                border-right: none;
-                border-bottom: 1px solid var(--ink);
-                padding: 30px 25px;
-                justify-content: center; /* Center vertically when closed */
-                flex: none; /* Disable flex grow logic */
-            }
-            
+            .shutter-item:last-child { border-bottom: none; }
             .shutter-content { min-width: auto; }
-
-            .shutter-title { font-size: 28px; }
+            .shutter-title { font-size: 24px; }
             .shutter-num { margin-bottom: 5px; font-size: 12px;}
-
-            /* Mobile Active Class */
-            .shutter-item.mobile-active {
-                height: auto;
-                padding: 40px 25px;
-                background-color: var(--ink);
+            
+            /* Mobile Active State - Grows to fill */
+            .shutter-item.mobile-active { 
+                flex: 5; /* Expands to take up most of the screen */
+                padding: 40px 25px; 
+                background-color: var(--ink); 
             }
-
-            .shutter-item.mobile-active .shutter-title {
-                color: var(--bg);
-                margin-bottom: 20px;
-            }
-
-            .shutter-item.mobile-active .shutter-desc {
-                opacity: 1;
-                height: auto;
-                transform: translateY(0);
-                color: #CCC;
-                display: block;
-                margin-top: 20px;
-                font-size: 16px;
-            }
+            .shutter-item.mobile-active .shutter-title { color: var(--bg); margin-bottom: 20px; }
+            .shutter-item.mobile-active .shutter-desc { opacity: 1; height: auto; transform: translateY(0); color: #CCC; display: block; margin-top: 20px; font-size: 16px; }
 
             /* Command Deck Mobile */
             .command-deck { grid-template-columns: 1fr; gap: 30px; }
-            .viewport-container { position: relative; top: 0; order: -1; margin-bottom: 20px; aspect-ratio: 16/9; }
+            .viewport-container { position: relative; top: 0; order: -1; margin-bottom: 20px; aspect-ratio: 9/16; width: 80%; }
             .command-item { padding: 20px 0; opacity: 1; }
             .command-desc { display: block; }
             .command-item.active { padding-left: 0; border-bottom: 1px solid var(--line); }
             .command-item.active::before { display: none; }
             
-            /* Creds Mobile: Stack them */
-            .creds-container { height: auto; }
+            /* Creds Mobile (FIXED UX) */
+            .creds-container { height: auto; max-height: none; }
             .creds-row { flex-direction: column; gap: 15px; }
-            .cred-card { min-height: 150px; padding: 30px; }
+            .cred-card { min-height: 120px; padding: 20px; }
             .cred-title { font-size: 24px; } 
             
-            /* MOBILE EXPANDED CRED FIX */
-            .cred-card.expanded {
+            /* Expanded Card Mobile Polish */
+            .cred-card.expanded { 
                 position: fixed; 
                 top: 0; 
                 left: 0; 
                 width: 100%; 
-                height: 100%;
-                z-index: 99999;
-                padding: 80px 30px 40px 30px; 
+                height: 100%; 
+                z-index: 99999; 
+                padding: 100px 30px 40px 30px; /* More top padding */
                 overflow-y: auto; 
-                background-color: var(--bg);
-                border: none;
+                background-color: var(--bg); 
+                border: none; 
                 box-sizing: border-box; 
             }
             
-            .cred-close {
-                top: 20px; right: 20px;
-                font-size: 40px;
+            /* Visible Close Button */
+            .cred-close { 
+                top: 40px; 
+                right: 30px; 
+                font-size: 30px; /* Slightly smaller text icon */
                 color: var(--ink);
+                background: rgba(255,255,255,0.8); /* Background circle */
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             }
-
-            .spacer-lg { height: 100px; }
-            .spacer-md { height: 60px; }
         }
 
         .fade-in { opacity: 0; transform: translateY(20px); transition: 0.8s ease; }
@@ -589,13 +504,14 @@
 </head>
 <body>
 
+    <nav>
+        <div class="meta">Resume / Portfolio</div>
+        <div class="contact-stack meta">
+            <a href="mailto:coach@occult.fitness">coach@occult.fitness</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <nav>
-            <div class="meta">Resume / Portfolio</div>
-            <div class="contact-stack meta">
-                <a href="mailto:coach@occult.fitness">coach@occult.fitness</a>
-            </div>
-        </nav>
 
         <section class="hero fade-in">
             <h1>Lucas<br>Standen.</h1>
@@ -605,55 +521,54 @@
             </p>
         </section>
 
-        <div class="spacer-md"></div>
-
-        <section class="capabilities-section fade-in">
-            <h2 style="position: absolute; top: 0; left: 0; width: 0; height: 0; opacity: 0;">Core Capabilities</h2> <div class="shutter-container">
-                
-                <div class="shutter-item" onclick="toggleShutter(this)">
-                    <div class="shutter-content">
-                        <span class="shutter-num">01 / PROFESSIONALISM</span>
-                        <h3 class="shutter-title">Standard of<br>Care</h3>
-                        <p class="shutter-desc">
-                            A facility is a business, not a clubhouse. I bring an owner’s perspective to the floor—respecting the systems, protecting the assets, and maintaining a professional standard without needing oversight.
-                        </p>
+        <section class="fade-in">
+            <h2 style="margin-top: 0;">Core Capabilities</h2> 
+            <div class="capabilities-section">
+                <div class="shutter-container">
+                    
+                    <div class="shutter-item" onclick="toggleShutter(this)">
+                        <div class="shutter-content">
+                            <span class="shutter-num">01 / PROFESSIONALISM</span>
+                            <h3 class="shutter-title">Standard of<br>Care</h3>
+                            <p class="shutter-desc">
+                                A facility is a business, not a clubhouse. I bring an owner’s perspective to the floor—respecting the systems, protecting the assets, and maintaining a professional standard without needing oversight.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="shutter-item" onclick="toggleShutter(this)">
-                    <div class="shutter-content">
-                        <span class="shutter-num">02 / THE BUY-IN</span>
-                        <h3 class="shutter-title">Exceptional<br>Onboarding</h3>
-                        <p class="shutter-desc">
-                            Bridging the gap between "trial" and "member." I focus on making the first 30 days safe, structured, and engaging, ensuring that joining becomes the only logical choice.
-                        </p>
+                    <div class="shutter-item" onclick="toggleShutter(this)">
+                        <div class="shutter-content">
+                            <span class="shutter-num">02 / THE BUY-IN</span>
+                            <h3 class="shutter-title">Exceptional<br>Onboarding</h3>
+                            <p class="shutter-desc">
+                                Bridging the gap between "trial" and "member." I focus on making the first 30 days safe, structured, and engaging, ensuring that joining becomes the only logical choice.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="shutter-item" onclick="toggleShutter(this)">
-                    <div class="shutter-content">
-                        <span class="shutter-num">03 / ADAPTIVE COACHING</span>
-                        <h3 class="shutter-title">Solution<br>Focused</h3>
-                        <p class="shutter-desc">
-                            Coaching is about finding solutions, not just shouting cues. I leverage technical diagnostics to identify faults and implement modifications that keep the stimulus high and the risk low.
-                        </p>
+                    <div class="shutter-item" onclick="toggleShutter(this)">
+                        <div class="shutter-content">
+                            <span class="shutter-num">03 / ADAPTIVE COACHING</span>
+                            <h3 class="shutter-title">Solution<br>Focused</h3>
+                            <p class="shutter-desc">
+                                Coaching is about finding solutions, not just shouting cues. I leverage technical diagnostics to identify faults and implement modifications that keep the stimulus high and the risk low.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="shutter-item" onclick="toggleShutter(this)">
-                    <div class="shutter-content">
-                        <span class="shutter-num">04 / ROOM OWNERSHIP</span>
-                        <h3 class="shutter-title">Setting The<br>Tone</h3>
-                        <p class="shutter-desc">
-                            The coach sets the temperature. I take full ownership of the room's energy, ensuring a consistent, high standard of enthusiasm whether it's the 5am crew or the evening rush.
-                        </p>
+                    <div class="shutter-item" onclick="toggleShutter(this)">
+                        <div class="shutter-content">
+                            <span class="shutter-num">04 / ROOM OWNERSHIP</span>
+                            <h3 class="shutter-title">Setting The<br>Tone</h3>
+                            <p class="shutter-desc">
+                                The coach sets the temperature. I take full ownership of the room's energy, ensuring a consistent, high standard of enthusiasm whether it's the 5am crew or the evening rush.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </section>
-
-        <div class="spacer-md"></div>
 
         <section class="fade-in">
             <h2>Professional History</h2>
@@ -752,8 +667,6 @@
             </div>
         </section>
 
-        <div class="spacer-lg"></div>
-
         <section class="fade-in">
             <h2>Coaching Operations</h2>
             <div class="command-deck">
@@ -811,8 +724,6 @@
             </div>
         </section>
 
-        <div class="spacer-lg"></div>
-
         <section class="fade-in">
             <h2>Education & Credentials</h2>
             <span class="section-instruction">* Select a module to view details</span>
@@ -863,8 +774,6 @@
                 </div>
             </div>
         </section>
-
-        <div class="spacer-lg"></div>
 
         <footer class="fade-in" style="border-top: 1px solid var(--line); padding: 60px 0; text-align: center;">
             <a href="mailto:coach@occult.fitness" style="font-size: clamp(20px, 4vw, 24px); font-weight: 700; color: var(--ink);">COACH@OCCULT.FITNESS</a>
@@ -923,6 +832,11 @@
             activeVid.classList.add('active');
             activeVid.muted = globalMuted;
             activeVid.play();
+
+            // Mobile: Scroll to video on tap
+            if (window.innerWidth <= 900) {
+                 document.querySelector('.viewport-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
 
         function toggleVolume(event) {
