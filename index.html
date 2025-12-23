@@ -320,7 +320,7 @@
         .volume-toggle:hover { transform: scale(1.1); }
         .volume-icon svg { width: 24px; height: 24px; fill: currentColor; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8)); }
 
-        /* --- CREDENTIALS --- */
+        /* --- CREDENTIALS (UPDATED COLORS) --- */
         .creds-container {
             position: relative;
             width: 100%;
@@ -329,10 +329,11 @@
             max-height: 500px; 
         }
         .creds-row { display: flex; gap: 15px; width: 100%; height: 100%; }
+        
         .cred-card {
             flex: 1; 
-            background-color: #FFF;
-            border: 1px solid var(--line);
+            background-color: var(--bg); /* UPDATED: Changed from #FFF to var(--bg) */
+            border: 1px solid var(--ink); /* UPDATED: Changed border to charcoal */
             padding: 30px 15px; 
             position: relative;
             display: flex;
@@ -342,11 +343,13 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
+        
         .cred-card:hover {
-            border-color: var(--ink);
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            /* Removed border-color change since it's already charcoal */
         }
+        
         .cred-num { font-family: 'Courier New', monospace; font-size: 14px; color: #999; margin-bottom: 20px; }
         .cred-title {
             font-size: clamp(15px, 1.5vw, 22px); 
@@ -403,7 +406,7 @@
             /* Center All Content on Mobile */
             section { 
                 padding-top: 80px; 
-                justify-content: center; /* FIX: Centers history and other content */
+                justify-content: center; 
                 height: auto; 
                 min-height: 100vh; 
             }
@@ -415,10 +418,9 @@
             .detail-grid { grid-template-columns: 1fr; }
             .detail-content { grid-template-columns: 1fr; gap: 30px; }
             
-            /* KINETIC SHUTTERS MOBILE (FIXED LAYOUT) */
-            /* Ensure section fills screen */
+            /* KINETIC SHUTTERS MOBILE */
             .capabilities-section { 
-                height: calc(100vh - 160px); /* Use available vertical space minus padding */
+                height: calc(100vh - 160px); 
                 min-height: 500px;
                 max-height: 800px;
             }
@@ -430,7 +432,6 @@
             }
             .shutter-item { 
                 width: 100%; 
-                /* Use flex-grow to share space evenly */
                 flex: 1;
                 height: auto;
                 border-right: none; 
@@ -443,9 +444,9 @@
             .shutter-title { font-size: 24px; }
             .shutter-num { margin-bottom: 5px; font-size: 12px;}
             
-            /* Mobile Active State - Grows to fill */
+            /* Mobile Active State */
             .shutter-item.mobile-active { 
-                flex: 5; /* Expands to take up most of the screen */
+                flex: 5; 
                 padding: 40px 25px; 
                 background-color: var(--ink); 
             }
@@ -460,7 +461,7 @@
             .command-item.active { padding-left: 0; border-bottom: 1px solid var(--line); }
             .command-item.active::before { display: none; }
             
-            /* Creds Mobile (FIXED UX) */
+            /* Creds Mobile */
             .creds-container { height: auto; max-height: none; }
             .creds-row { flex-direction: column; gap: 15px; }
             .cred-card { min-height: 120px; padding: 20px; }
@@ -474,7 +475,7 @@
                 width: 100%; 
                 height: 100%; 
                 z-index: 99999; 
-                padding: 100px 30px 40px 30px; /* More top padding */
+                padding: 100px 30px 40px 30px; 
                 overflow-y: auto; 
                 background-color: var(--bg); 
                 border: none; 
@@ -485,9 +486,9 @@
             .cred-close { 
                 top: 40px; 
                 right: 30px; 
-                font-size: 30px; /* Slightly smaller text icon */
+                font-size: 30px;
                 color: var(--ink);
-                background: rgba(255,255,255,0.8); /* Background circle */
+                background: rgba(255,255,255,0.8); 
                 width: 50px;
                 height: 50px;
                 display: flex;
@@ -505,7 +506,7 @@
 <body>
 
     <nav>
-        <div class="meta">Resume / Portfolio</div>
+        <div class="meta">Resume</div>
         <div class="contact-stack meta">
             <a href="mailto:coach@occult.fitness">coach@occult.fitness</a>
         </div>
@@ -517,7 +518,7 @@
             <h1>Lucas<br>Standen.</h1>
             <p class="hero-statement">
                 Performance Coach.<br>
-                Dedicated to the craft of moving well and working hard. I focus on virtuous movement and building a community that values the grind over the gimmick.
+                Dedicated to the craft of moving well and working hard.
             </p>
         </section>
 
@@ -531,7 +532,7 @@
                             <span class="shutter-num">01 / PROFESSIONALISM</span>
                             <h3 class="shutter-title">Standard of<br>Care</h3>
                             <p class="shutter-desc">
-                                A facility is a business, not a clubhouse. I bring an owner’s perspective to the floor—respecting the systems, protecting the assets, and maintaining a professional standard without needing oversight.
+                                A facility is a business, not a clubhouse. I bring an owner’s perspective to the floor—respecting the systems, building strong coach/member relationships, and maintaining a professional standard without needing oversight.
                             </p>
                         </div>
                     </div>
@@ -541,7 +542,7 @@
                             <span class="shutter-num">02 / THE BUY-IN</span>
                             <h3 class="shutter-title">Exceptional<br>Onboarding</h3>
                             <p class="shutter-desc">
-                                Bridging the gap between "trial" and "member." I focus on making the first 30 days safe, structured, and engaging, ensuring that joining becomes the only logical choice.
+                                Bridging the gap between "trial" and "member." I focus on making the onboarding safe, structured, and engaging, increasing member retention potential.
                             </p>
                         </div>
                     </div>
