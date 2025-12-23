@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lucas Standen | Portfolio</title>
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg: #F2F0EB;       /* Bone White */
+            --ink: #0F0F0F;      /* Deepest Charcoal */
+            --line: #D8D6D1;     
+        }
+
+        /* --- RESET --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body.no-scroll { overflow: hidden; }
+
+        a { text-decoration: none; color: inherit; cursor: pointer; }
+        ul { list-style: none; }
+
+        /* --- TYPOGRAPHY --- */
+        h1 {
+            font-size: clamp(48px, 14vw, 200px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-left: -0.05em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px; 
+            display: inline-block;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 5px;
+        }
+
+        /* Subtitle instruction style */
+        .section-instruction {
+            display: block;
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        p {
+            font-size: clamp(16px, 2vw, 18px);
+            font-weight: 400;
+            color: #333;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .meta {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* --- LAYOUT UTILS --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .spacer-lg { height: 150px; }
+        .spacer-md { height: 80px; }
+
+        /* --- HEADER --- */
+        nav {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--line);
+        }
+        .contact-stack a { transition: color 0.3s; font-weight: 600; }
+        .contact-stack a:hover { color: #888; }
+
+        /* --- HERO --- */
+        .hero { padding-top: 100px; padding-bottom: 80px; }
+        .hero-statement {
+            font-size: clamp(20px, 4vw, 28px);
+            line-height: 1.3;
+            font-weight: 400;
+            max-width: 80%;
+            color: var(--ink);
+        }
+
+        /* --- KINETIC SHUTTERS (CORE CAPABILITIES) --- */
+        /* FIXED: No overlapping, responsive font scaling */
+        .capabilities-section {
+            padding: 0; 
+            height: 600px; /* Fixed height for desktop impact */
+            border-top: 1px solid var(--ink);
+            border-bottom: 1px solid var(--ink);
+            margin: 60px 0;
+            overflow: hidden;
+        }
+
+        .shutter-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shutter-item {
+            position: relative;
+            flex: 1; /* All start equal width */
+            border-right: 1px solid var(--ink);
+            background-color: var(--bg);
+            transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* REDUCED PADDING: Gives text more room */
+            padding: 40px 20px; 
+        }
+
+        .shutter-item:last-child { border-right: none; }
+
+        .shutter-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            /* Removed min-width to prevent overflow */
+        }
+
+        .shutter-num {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            margin-bottom: 15px;
+            display: block;
+            color: #888;
+            transition: color 0.3s;
+            white-space: nowrap; /* Keep number on one line */
+        }
+
+        .shutter-title {
+            /* FIXED: Smaller base font size that fits in the compressed column */
+            font-size: clamp(22px, 2vw, 32px);
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.0;
+            letter-spacing: -0.5px;
+            margin-bottom: 0;
+            color: var(--ink);
+            transition: all 0.5s ease;
+            transform-origin: bottom left;
+            
+            /* FIXED: Ensure text wraps instead of clips */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto; 
+            width: 100%;
+        }
+
+        .shutter-desc {
+            font-size: 16px; /* Slightly smaller for better fit */
+            line-height: 1.5;
+            color: var(--bg); 
+            opacity: 0;
+            margin-top: 0;
+            height: 0;
+            max-width: 500px;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.1s;
+        }
+
+        /* DESKTOP HOVER INTERACTION */
+        @media (min-width: 901px) {
+            .shutter-container:hover .shutter-item { opacity: 0.4; } /* Dim others */
+            
+            .shutter-container .shutter-item:hover {
+                flex: 3; /* Grow Active Item significantly */
+                background-color: var(--ink); 
+                opacity: 1;
+            }
+
+            .shutter-item:hover .shutter-num { color: #666; }
+            
+            /* FIXED: Font grows BIG only when there is room (on hover) */
+            .shutter-item:hover .shutter-title { 
+                color: var(--bg); 
+                font-size: clamp(32px, 4vw, 52px); 
+            }
+            
+            .shutter-item:hover .shutter-desc {
+                opacity: 1;
+                height: auto;
+                margin-top: 30px;
+                transform: translateY(0);
+                color: #CCC; 
+            }
+        }
+
+        /* --- HISTORY --- */
+        .timeline-container { border-top: 1px solid var(--line); }
+        .job-item { border-bottom: 1px solid var(--line); transition: 0.4s ease; cursor: pointer; }
+        .job-item:hover { background-color: #EBE9E4; }
+        .job-item.active { background-color: #fff; }
+        .job-header { padding: 40px 0; display: grid; grid-template-columns: 150px 1fr auto; align-items: baseline; }
+        .job-company { font-size: clamp(22px, 3vw, 28px); font-weight: 600; letter-spacing: -0.5px; }
+        .job-role { font-size: 16px; color: #666; margin-top: 4px; }
+        .indicator { font-size: 24px; font-weight: 300; }
+        .job-details { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .job-item.active .job-details { max-height: 1000px; opacity: 1; padding-bottom: 60px; }
+        .detail-grid { display: grid; grid-template-columns: 150px 1fr; gap: 20px; }
+        .detail-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .detail-block h4 { font-size: 12px; text-transform: uppercase; margin-bottom: 15px; color: #999; letter-spacing: 1px; }
+        .detail-block ul li { position: relative; padding-left: 15px; margin-bottom: 10px; font-size: 16px; color: #444; }
+        .detail-block ul li::before { content: "•"; position: absolute; left: 0; color: #999; }
+
+        /* --- COMMAND DECK (VIDEO SECTION) --- */
+        .command-deck {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; 
+            gap: 60px;
+            align-items: start;
+            border-top: 1px solid var(--line);
+            padding-top: 60px;
+        }
+        .command-list { display: flex; flex-direction: column; }
+        .command-item {
+            padding: 30px 0;
+            border-bottom: 1px solid var(--line);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0.5;
+        }
+        .command-item:hover { opacity: 0.8; }
+        .command-item.active { opacity: 1; padding-left: 20px; border-bottom: 1px solid var(--ink); }
+        .command-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 50%; transform: translateY(-50%);
+            width: 8px; height: 8px;
+            background-color: var(--ink);
+            border-radius: 50%;
+        }
+        .command-meta {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px; color: #888;
+            margin-bottom: 10px; display: block;
+            letter-spacing: 1px;
+        }
+        .command-title {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 700;
+            line-height: 1.1;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+        .command-desc {
+            font-size: 14px; color: #666; margin-top: 10px;
+            max-width: 90%; display: none;
+        }
+        .command-item.active .command-desc { display: block; animation: fadeIn 0.5s ease; }
+
+        /* Video Viewport */
+        .viewport-container {
+            position: sticky;
+            top: 40px;
+            width: 100%;
+            height: auto;
+            max-height: 80vh; 
+            background-color: #000;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            cursor: pointer; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .viewport-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 2;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+            background-size: 100% 2px;
+            opacity: 0.2;
+        }
+        .viewport-video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            display: none;
+        }
+        .viewport-video.active { display: block; }
+
+        /* Volume Toggle */
+        .volume-toggle {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 10; 
+            background: transparent;
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .volume-toggle:hover { transform: scale(1.1); }
+        .volume-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
+        }
+
+        /* --- VIDEO MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-content {
+            position: relative;
+            width: auto; height: auto;
+            max-width: 90vw; max-height: 90vh;
+        }
+        .modal-video-player { width: 100%; height: 100%; max-height: 90vh; display: block; }
+        .modal-close {
+            position: absolute; top: -40px; right: 0;
+            color: #fff; font-size: 40px;
+            cursor: pointer; line-height: 1;
+        }
+
+        /* --- IMMERSIVE CREDENTIALS ROW --- */
+        .creds-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-top: 40px;
+        }
+
+        .creds-row {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cred-card {
+            flex: 1; 
+            background-color: #FFF;
+            border: 1px solid var(--line);
+            padding: 30px 15px; 
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .cred-card:hover {
+            border-color: var(--ink);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .cred-num {
+            font-family: 'Courier New', monospace;
+            font-size: 14px; color: #999;
+            margin-bottom: 20px;
+        }
+
+        .cred-title {
+            font-size: clamp(15px, 1.5vw, 22px); 
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.1;
+            color: var(--ink);
+            transition: all 0.4s ease;
+            hyphens: auto; 
+            -webkit-hyphens: auto;
+            word-wrap: break-word;
+        }
+
+        .cred-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: var(--line);
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+
+        .cred-card:hover .cred-icon {
+            color: var(--ink);
+            transform: scale(1.2);
+        }
+
+        /* EXPANDED CRED STATE */
+        .cred-card.expanded {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 20;
+            background-color: var(--bg);
+            border: 1px solid var(--ink);
+            padding: 60px; 
+            cursor: default;
+            transform: translateY(0);
+            justify-content: flex-start;
+        }
+
+        .cred-card.expanded .cred-title {
+            font-size: clamp(32px, 4vw, 48px);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--line);
+            margin-top: 20px; 
+        }
+
+        .cred-card.expanded .cred-icon { display: none; }
+
+        .cred-desc {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            opacity: 0;
+            display: none;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+        }
+
+        .cred-card.expanded .cred-desc {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cred-close {
+            position: absolute;
+            top: 30px; right: 30px;
+            font-size: 40px;
+            line-height: 1;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            color: var(--ink);
+            z-index: 30;
+        }
+        
+        .cred-card.expanded .cred-close {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .container { padding: 0 25px; }
+            .hero-statement { max-width: 100%; }
+            .job-header { grid-template-columns: 1fr auto; gap: 5px; }
+            .job-header .meta { grid-column: 1 / -1; margin-bottom: 8px; }
+            .detail-grid { grid-template-columns: 1fr; }
+            .detail-content { grid-template-columns: 1fr; gap: 30px; }
+            
+            /* KINETIC SHUTTERS MOBILE */
+            .capabilities-section {
+                height: auto;
+                margin: 40px 0;
+            }
+
+            .shutter-container {
+                flex-direction: column;
+            }
+
+            .shutter-item {
+                width: 100%;
+                height: 100px; /* Collapsed height */
+                border-right: none;
+                border-bottom: 1px solid var(--ink);
+                padding: 30px 25px;
+                justify-content: center; /* Center vertically when closed */
+                flex: none; /* Disable flex grow logic */
+            }
+            
+            .shutter-content { min-width: auto; }
+
+            .shutter-title { font-size: 28px; }
+            .shutter-num { margin-bottom: 5px; font-size: 12px;}
+
+            /* Mobile Active Class */
+            .shutter-item.mobile-active {
+                height: auto;
+                padding: 40px 25px;
+                background-color: var(--ink);
+            }
+
+            .shutter-item.mobile-active .shutter-title {
+                color: var(--bg);
+                margin-bottom: 20px;
+            }
+
+            .shutter-item.mobile-active .shutter-desc {
+                opacity: 1;
+                height: auto;
+                transform: translateY(0);
+                color: #CCC;
+                display: block;
+                margin-top: 20px;
+                font-size: 16px;
+            }
+
+            /* Command Deck Mobile */
+            .command-deck { grid-template-columns: 1fr; gap: 30px; }
+            .viewport-container { position: relative; top: 0; order: -1; margin-bottom: 20px; aspect-ratio: 16/9; }
+            .command-item { padding: 20px 0; opacity: 1; }
+            .command-desc { display: block; }
+            .command-item.active { padding-left: 0; border-bottom: 1px solid var(--line); }
+            .command-item.active::before { display: none; }
+            
+            /* Creds Mobile: Stack them */
+            .creds-container { height: auto; }
+            .creds-row { flex-direction: column; gap: 15px; }
+            .cred-card { min-height: 150px; padding: 30px; }
+            .cred-title { font-size: 24px; } 
+            
+            /* MOBILE EXPANDED CRED FIX */
+            .cred-card.expanded {
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%;
+                z-index: 99999;
+                padding: 80px 30px 40px 30px; 
+                overflow-y: auto; 
+                background-color: var(--bg);
+                border: none;
+                box-sizing: border-box; 
+            }
+            
+            .cred-close {
+                top: 20px; right: 20px;
+                font-size: 40px;
+                color: var(--ink);
+            }
+
+            .spacer-lg { height: 100px; }
+            .spacer-md { height: 60px; }
+        }
+
+        .fade-in { opacity: 0; transform: translateY(20px); transition: 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="meta">Resume / Portfolio</div>
+            <div class="contact-stack meta">
+                <a href="mailto:coach@occult.fitness">coach@occult.fitness</a>
+            </div>
+        </nav>
+
+        <section class="hero fade-in">
+            <h1>Lucas<br>Standen.</h1>
+            <p class="hero-statement">
+                Performance Coach.<br>
+                Dedicated to the craft of moving well and working hard. I focus on virtuous movement and building a community that values the grind over the gimmick.
+            </p>
+        </section>
+
+        <div class="spacer-md"></div>
+
+        <section class="capabilities-section fade-in">
+            <h2 style="position: absolute; top: 0; left: 0; width: 0; height: 0; opacity: 0;">Core Capabilities</h2> <div class="shutter-container">
+                
+                <div class="shutter-item" onclick="toggleShutter(this)">
+                    <div class="shutter-content">
+                        <span class="shutter-num">01 / PROFESSIONALISM</span>
+                        <h3 class="shutter-title">Standard of<br>Care</h3>
+                        <p class="shutter-desc">
+                            A facility is a business, not a clubhouse. I bring an owner’s perspective to the floor—respecting the systems, protecting the assets, and maintaining a professional standard without needing oversight.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="shutter-item" onclick="toggleShutter(this)">
+                    <div class="shutter-content">
+                        <span class="shutter-num">02 / THE BUY-IN</span>
+                        <h3 class="shutter-title">Exceptional<br>Onboarding</h3>
+                        <p class="shutter-desc">
+                            Bridging the gap between "trial" and "member." I focus on making the first 30 days safe, structured, and engaging, ensuring that joining becomes the only logical choice.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="shutter-item" onclick="toggleShutter(this)">
+                    <div class="shutter-content">
+                        <span class="shutter-num">03 / ADAPTIVE COACHING</span>
+                        <h3 class="shutter-title">Solution<br>Focused</h3>
+                        <p class="shutter-desc">
+                            Coaching is about finding solutions, not just shouting cues. I leverage technical diagnostics to identify faults and implement modifications that keep the stimulus high and the risk low.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="shutter-item" onclick="toggleShutter(this)">
+                    <div class="shutter-content">
+                        <span class="shutter-num">04 / ROOM OWNERSHIP</span>
+                        <h3 class="shutter-title">Setting The<br>Tone</h3>
+                        <p class="shutter-desc">
+                            The coach sets the temperature. I take full ownership of the room's energy, ensuring a consistent, high standard of enthusiasm whether it's the 5am crew or the evening rush.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="spacer-md"></div>
+
+        <section class="fade-in">
+            <h2>Professional History</h2>
+            <div class="timeline-container">
+                
+                <div class="job-item" onclick="toggleJob(this)">
+                    <div class="job-header">
+                        <span class="meta">Jul - Dec 2025</span>
+                        <div>
+                            <span class="job-company">Facilities</span>
+                            <div class="job-role">Performance Coach | Newstead, QLD</div>
+                        </div>
+                        <div class="indicator">+</div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-grid">
+                            <div></div>
+                            <div class="detail-content">
+                                <div class="detail-block">
+                                    <h4>Role Overview</h4>
+                                    <p style="font-size: 16px;">Led the S&C programming and specialist gymnastics slots. My focus was on keeping the training quality high and the community positive during the gym's final months of operation.</p>
+                                </div>
+                                <div class="detail-block">
+                                    <h4>Technical Delivery</h4>
+                                    <ul>
+                                        <li><strong>Programming:</strong> Designed progressions for Handstand development and Muscle Ups, focusing on building strict strength before introducing dynamic volume.</li>
+                                        <li><strong>Culture:</strong> The gym was closing down, so my priority became the people—maintaining high spirits and consistent training standards right until the doors shut.</li>
+                                        <li><strong>Service:</strong> Provided detailed, high-touch feedback. I ensured clients understood exactly <em>what</em> they were doing and <em>why</em>, rather than just cheering them on.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job-item" onclick="toggleJob(this)">
+                    <div class="job-header">
+                        <span class="meta">2022 - 2025</span>
+                        <div>
+                            <span class="job-company">CrossFit CrossAxed</span>
+                            <div class="job-role">Coach & On-Ramp Lead | Wynnum, QLD</div>
+                        </div>
+                        <div class="indicator">+</div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-grid">
+                            <div></div>
+                            <div class="detail-content">
+                                <div class="detail-block">
+                                    <h4>Role Overview</h4>
+                                    <p style="font-size: 16px;">Coached daily affiliate classes and managed the On-Ramp intake. I acted as the bridge for anyone new to CrossFit—whether they were coming from the couch or transitioning from a conventional gym.</p>
+                                </div>
+                                <div class="detail-block">
+                                    <h4>Technical Delivery</h4>
+                                    <ul>
+                                        <li><strong>Onboarding:</strong> Tailored the intake process to the individual. For some, it was about basic movement health; for others, it was translating their existing gym strength into specific CrossFit mechanics.</li>
+                                        <li><strong>Retention:</strong> Starting CrossFit is intimidating. I focused on making those first 30 days feel safe and achievable, which kept people coming back.</li>
+                                        <li><strong>The Grind:</strong> Managed a heavy coaching roster (15+ hours) alongside external work. I take pride in showing up early, prepared, and bringing genuine energy to every single class.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job-item" onclick="toggleJob(this)">
+                    <div class="job-header">
+                        <span class="meta">2017 - 2022</span>
+                        <div>
+                            <span class="job-company">Bengkel Tetuka</span>
+                            <div class="job-role">Co-Founder & Head Coach | Indonesia</div>
+                        </div>
+                        <div class="indicator">+</div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-grid">
+                            <div></div>
+                            <div class="detail-content">
+                                <div class="detail-block">
+                                    <h4>Role Overview</h4>
+                                    <p style="font-size: 16px;">Teamed up with a Jakarta affiliate to launch their first branch in Surabaya. I was the boots-on-the-ground lead, responsible for setting up the gym's culture and establishing our training standards.</p>
+                                </div>
+                                <div class="detail-block">
+                                    <h4>Technical Delivery</h4>
+                                    <ul>
+                                        <li><strong>The Pivot:</strong> We eventually shifted our focus from pure CrossFit to a Strength & Conditioning model. It fit the local market better and lowered the barrier to entry for new members.</li>
+                                        <li><strong>Consistency:</strong> Implemented strict class flows so members got a great workout regardless of which coach was on the floor.</li>
+                                        <li><strong>Mentorship:</strong> Spent years developing local coaches, teaching them how to see faults, correct movement, and command a room with confidence.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="spacer-lg"></div>
+
+        <section class="fade-in">
+            <h2>Coaching Operations</h2>
+            <div class="command-deck">
+                
+                <div class="command-list">
+                    
+                    <div class="command-item active" onclick="switchChannel(0, this)">
+                        <span class="command-meta">FILE_01 // BREAKDOWN</span>
+                        <div class="command-title">Toes To Bar<br>Capacity</div>
+                        <div class="command-desc">
+                            Using Toes to Bar to demonstrate how virtuous shapes create capacity. This breakdown gives athletes technical options under fatigue—allowing them to adjust mechanics and keep moving when it gets hard, rather than defaulting to rest.
+                        </div>
+                    </div>
+
+                    <div class="command-item" onclick="switchChannel(1, this)">
+                        <span class="command-meta">FILE_02 // EXECUTION</span>
+                        <div class="command-title">Live Class<br>Management</div>
+                        <div class="command-desc">
+                            Showing the session in action. Rather than talking about class management, this reel shows it. It highlights the balance of controlling a group and correcting individuals, ensuring the training stimulus hits without the room feeling chaotic.
+                        </div>
+                    </div>
+
+                    <div class="command-item" onclick="switchChannel(2, this)">
+                        <span class="command-meta">FILE_03 // MECHANICS</span>
+                        <div class="command-title">Mechanical<br>Diagnostics</div>
+                        <div class="command-desc">
+                            Demonstrating the correct intent of the GHD. Rather than just an ab exercise, I explain how to use it for hip flexor development. By cueing knee flexion and glute drive, we ensure the athlete is pulling themselves up with the correct muscles, eliminating compensation patterns.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="viewport-container" onclick="openModal()">
+                    <div class="viewport-overlay"></div>
+                    
+                    <div class="volume-toggle" id="volumeBtn" onclick="toggleVolume(event)">
+                        <span class="volume-icon" id="volumeIcon">
+                            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                        </span>
+                    </div>
+
+                    <video class="viewport-video active" id="vid-0" loop muted playsinline>
+                        <source src="https://storage.googleapis.com/msgsndr/Qu0u0SOEJuzZwmir7nhj/media/6948ca91aca6abe9ca04e8fe.mp4" type="video/mp4">
+                    </video>
+
+                    <video class="viewport-video" id="vid-1" loop muted playsinline>
+                        <source src="https://storage.googleapis.com/msgsndr/Qu0u0SOEJuzZwmir7nhj/media/6948ca9159a0a65ac458979b.mp4" type="video/mp4">
+                    </video>
+
+                    <video class="viewport-video" id="vid-2" loop muted playsinline>
+                        <source src="https://storage.googleapis.com/msgsndr/Qu0u0SOEJuzZwmir7nhj/media/6948ca9159a0a606f058979a.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="spacer-lg"></div>
+
+        <section class="fade-in">
+            <h2>Education & Credentials</h2>
+            <span class="section-instruction">* Select a module to view details</span>
+            
+            <div class="creds-container">
+                <div class="creds-row">
+                    
+                    <div class="cred-card" onclick="toggleCred(this)">
+                        <div class="cred-close" onclick="toggleCred(this.parentElement); event.stopPropagation();">×</div>
+                        <div class="cred-num">01</div>
+                        <h3 class="cred-title">CrossFit<br>Level 2</h3>
+                        <p class="cred-desc">Advanced proficiency in the practical application of CrossFit methodology, specifically mastering the essential skills of teaching, seeing, and correcting functional movements in real-time. Demonstrates expertise in effective program design, dynamic class management, and the delivery of professional-level coaching to diverse athlete populations.</p>
+                        <div class="cred-icon">+</div>
+                    </div>
+
+                    <div class="cred-card" onclick="toggleCred(this)">
+                        <div class="cred-close" onclick="toggleCred(this.parentElement); event.stopPropagation();">×</div>
+                        <div class="cred-num">02</div>
+                        <h3 class="cred-title">The Gymnastics<br>Course</h3>
+                        <p class="cred-desc">Certifies advanced competency in teaching, spotting, and programming high-skill gymnastics movements for CrossFit and fitness environments, including levers, planches, and complex apparatus work. Establishes expertise in creating progressive training plans that bridge the gap between fundamental strength and elite-level skill execution, ensuring safe and effective athlete development.</p>
+                        <div class="cred-icon">+</div>
+                    </div>
+
+                    <div class="cred-card" onclick="toggleCred(this)">
+                        <div class="cred-close" onclick="toggleCred(this.parentElement); event.stopPropagation();">×</div>
+                        <div class="cred-num">03</div>
+                        <h3 class="cred-title">Birdbox<br>Coaching</h3>
+                        <p class="cred-desc">Expertise in advanced coaching pedagogy and applied biomechanics, utilizing a science-backed framework to distinguish between instructing, coaching, and educating for optimal athlete development. Develops proficiency in psychosocial engagement and diagnostic movement analysis, equipping trainers to implement targeted interventions that significantly improve performance, safety, and client retention.</p>
+                        <div class="cred-icon">+</div>
+                    </div>
+
+                    <div class="cred-card" onclick="toggleCred(this)">
+                        <div class="cred-close" onclick="toggleCred(this.parentElement); event.stopPropagation();">×</div>
+                        <div class="cred-num">04</div>
+                        <h3 class="cred-title">Burgener Strength<br>Level 1</h3>
+                        <p class="cred-desc">Proficiency in the Burgener Strength methodology for teaching the Snatch and Clean & Jerk, utilizing position-based progressions and skill transfer exercises to optimize technique. Certifies the ability to diagnose technical faults and implement corrective drills that enhance biomechanics, safety, and performance for athletes of all levels.</p>
+                        <div class="cred-icon">+</div>
+                    </div>
+
+                    <div class="cred-card" onclick="toggleCred(this)">
+                        <div class="cred-close" onclick="toggleCred(this.parentElement); event.stopPropagation();">×</div>
+                        <div class="cred-num">05</div>
+                        <h3 class="cred-title">Cert III & IV<br>(Pending)</h3>
+                        <p class="cred-desc">Certificate III qualifies individuals to work as Gym Instructors or Group Fitness Instructors, focusing on client assessments, technique refinement, and leading dynamic group sessions. Certificate IV advances this expertise to professional Personal Training, developing skills in exercise science, functional movement, and tailored programming for diverse populations including adolescents and older adults.</p>
+                        <div class="cred-icon">+</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="spacer-lg"></div>
+
+        <footer class="fade-in" style="border-top: 1px solid var(--line); padding: 60px 0; text-align: center;">
+            <a href="mailto:coach@occult.fitness" style="font-size: clamp(20px, 4vw, 24px); font-weight: 700; color: var(--ink);">COACH@OCCULT.FITNESS</a>
+        </footer>
+
+    </div>
+
+    <div id="videoModal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal()">×</span>
+            <video id="modalVideo" class="modal-video-player" controls playsinline>
+                </video>
+        </div>
+    </div>
+
+    <script>
+        // Accordion Logic
+        function toggleJob(element) {
+            const allJobs = document.querySelectorAll('.job-item');
+            allJobs.forEach(job => {
+                if (job !== element) {
+                    job.classList.remove('active');
+                    job.querySelector('.indicator').innerText = "+";
+                }
+            });
+            element.classList.toggle('active');
+            const indicator = element.querySelector('.indicator');
+            indicator.innerText = element.classList.contains('active') ? "×" : "+";
+        }
+
+        // --- COMMAND DECK LOGIC ---
+        let currentActiveVideoId = 'vid-0';
+        let globalMuted = true; 
+        const iconMuted = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+        const iconSound = '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+
+        window.addEventListener('load', () => {
+             const firstVid = document.getElementById('vid-0');
+             firstVid.play();
+        });
+
+        function switchChannel(index, listItem) {
+            const allItems = document.querySelectorAll('.command-item');
+            allItems.forEach(item => item.classList.remove('active'));
+            listItem.classList.add('active');
+
+            const allVids = document.querySelectorAll('.viewport-video');
+            allVids.forEach(vid => {
+                vid.classList.remove('active');
+                vid.pause();
+                vid.currentTime = 0; 
+            });
+
+            currentActiveVideoId = `vid-${index}`;
+            const activeVid = document.getElementById(currentActiveVideoId);
+            activeVid.classList.add('active');
+            activeVid.muted = globalMuted;
+            activeVid.play();
+        }
+
+        function toggleVolume(event) {
+            event.stopPropagation();
+            const activeVid = document.getElementById(currentActiveVideoId);
+            const iconContainer = document.getElementById('volumeIcon');
+            globalMuted = !globalMuted;
+            activeVid.muted = globalMuted;
+            iconContainer.innerHTML = globalMuted ? iconMuted : iconSound;
+        }
+
+        // --- VIDEO MODAL LOGIC ---
+        function openModal() {
+            const activeDashboardVideo = document.getElementById(currentActiveVideoId);
+            const sourceUrl = activeDashboardVideo.querySelector('source').src;
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+
+            modalVideo.src = sourceUrl;
+            modal.classList.add('active');
+            document.body.classList.add('no-scroll');
+            modalVideo.play();
+            activeDashboardVideo.pause();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            modalVideo.pause();
+            modalVideo.src = ""; 
+            modal.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            const activeDashboardVideo = document.getElementById(currentActiveVideoId);
+            activeDashboardVideo.play();
+        }
+
+        // --- CREDENTIALS EXPAND LOGIC ---
+        function toggleCred(element) {
+            if (element.classList.contains('expanded')) {
+                element.classList.remove('expanded');
+                document.body.classList.remove('no-scroll');
+            } else {
+                const allCreds = document.querySelectorAll('.cred-card');
+                allCreds.forEach(el => el.classList.remove('expanded'));
+                element.classList.add('expanded');
+                
+                if(window.innerWidth <= 900) {
+                      document.body.classList.add('no-scroll');
+                }
+            }
+        }
+
+        // --- SHUTTER TOGGLE (MOBILE) ---
+        function toggleShutter(element) {
+            // Only run this logic on mobile screens
+            if (window.innerWidth <= 900) {
+                // Close others
+                const allShutters = document.querySelectorAll('.shutter-item');
+                allShutters.forEach(el => {
+                    if (el !== element) el.classList.remove('mobile-active');
+                });
+                // Toggle current
+                element.classList.toggle('mobile-active');
+            }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
