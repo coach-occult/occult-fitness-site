@@ -1,0 +1,25 @@
+{
+  "name": "Occult Fitness",
+  "short_name": "Occult",
+  "description": "AI-Powered Coaching Platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#2C2C2C",
+  "orientation": "portrait-primary",
+  "categories": ["fitness", "business", "productivity"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
