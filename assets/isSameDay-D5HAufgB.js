@@ -1,0 +1,1 @@
+import{a8 as t}from"./index-CBNac_xg.js";function s(a,r){const e=t(a),f=t(r);return+e==+f}export{s as i};
