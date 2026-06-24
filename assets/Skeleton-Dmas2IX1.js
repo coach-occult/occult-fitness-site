@@ -1,1 +1,0 @@
-import{j as e}from"./vendor-motion-C4yrKq3y.js";import{q as o}from"./index-BfLtXOov.js";function a({className:n,...r}){return e.jsx("div",{className:o("animate-pulse rounded-2xl bg-zinc-200 dark:bg-zinc-700",n),...r})}export{a as S};
