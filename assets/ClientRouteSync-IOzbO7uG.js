@@ -1,0 +1,1 @@
+import{e as o,r as s}from"./vendor-react-uxIVbkH-.js";import{d as a}from"./index-CSvyVooL.js";import"./vendor-motion-C4yrKq3y.js";function f({children:r}){const{id:t}=o(),{setSelectedClientId:e}=a();return s.useEffect(()=>{t&&e(t)},[t,e]),r}export{f as ClientRouteSync};
