@@ -1,1 +1,0 @@
-import{j as n,r}from"./index-By8FrbOb.js";function o({className:e,...s}){return n.jsxDEV("div",{className:r("animate-pulse rounded-2xl bg-zinc-200 dark:bg-zinc-700",e),...s},void 0,!1,{fileName:"/Users/lucas/Occult/occult-session-tracker/src/components/ui/Skeleton.jsx",lineNumber:5,columnNumber:5},this)}export{o as S};

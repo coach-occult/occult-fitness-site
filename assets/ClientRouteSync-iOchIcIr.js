@@ -1,1 +1,0 @@
-import{e as o,r as s}from"./vendor-react-B9mMgu0B.js";import{d as a}from"./index-By8FrbOb.js";import"./vendor-motion-BV6B0_ur.js";function f({children:r}){const{id:t}=o(),{setSelectedClientId:e}=a();return s.useEffect(()=>{t&&e(t)},[t,e]),r}export{f as ClientRouteSync};
