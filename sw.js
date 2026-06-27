@@ -92,9 +92,9 @@ define(['./workbox-2ae722a1'], (function (workbox) { 'use strict';
     "revision": "9df985c28c53d36d2540372db65777a9"
   }, {
     "url": "index.html",
-    "revision": "0cbaf214b76f7c72eef12d3f4e902ed0"
+    "revision": "460e35b68dae86bced72dbda1e789ed0"
   }, {
-    "url": "assets/weight-DM0yAH72.js",
+    "url": "assets/weight-CQ5Ets4M.js",
     "revision": null
   }, {
     "url": "assets/vendor-react-B9mMgu0B.js",
@@ -103,58 +103,58 @@ define(['./workbox-2ae722a1'], (function (workbox) { 'use strict';
     "url": "assets/vendor-motion-BV6B0_ur.js",
     "revision": null
   }, {
-    "url": "assets/utensils-DeCYs9Az.js",
+    "url": "assets/utensils-gbdgkaYA.js",
     "revision": null
   }, {
-    "url": "assets/user-BQGvTHnw.js",
+    "url": "assets/user-BWJWxlOJ.js",
     "revision": null
   }, {
     "url": "assets/useEscapeKey-epIzhsqu.js",
     "revision": null
   }, {
-    "url": "assets/useComputedData-Cutdrnlc.js",
+    "url": "assets/useComputedData-Dm8HbKIF.js",
     "revision": null
   }, {
-    "url": "assets/useAthleteData-JTz_uTaU.js",
+    "url": "assets/useAthleteData-DQQdMkAq.js",
     "revision": null
   }, {
-    "url": "assets/useAnalytics-CJuZ5ozi.js",
+    "url": "assets/useAnalytics-4Ush1MCz.js",
     "revision": null
   }, {
-    "url": "assets/trophy-BpFJtkzS.js",
+    "url": "assets/trophy-DS6M36TE.js",
     "revision": null
   }, {
-    "url": "assets/triangle-alert-DsG484W5.js",
+    "url": "assets/triangle-alert-DkEHpeRk.js",
     "revision": null
   }, {
-    "url": "assets/trending-up-Qi9T85Xl.js",
+    "url": "assets/trending-up-DK3k2lOT.js",
     "revision": null
   }, {
-    "url": "assets/trash-2-C3PThgDa.js",
+    "url": "assets/trash-2-r8dO1Blo.js",
     "revision": null
   }, {
-    "url": "assets/timer-Drs0ylMv.js",
+    "url": "assets/timer-BWp3l1An.js",
     "revision": null
   }, {
-    "url": "assets/target-i8M8kY4G.js",
+    "url": "assets/target-BDREQhTh.js",
     "revision": null
   }, {
-    "url": "assets/subDays-BL4GL6d8.js",
+    "url": "assets/subDays-CYCXxFCA.js",
     "revision": null
   }, {
-    "url": "assets/send-ByeDzF8L.js",
+    "url": "assets/send-DIEvs4bz.js",
     "revision": null
   }, {
-    "url": "assets/search-BGzvMdzX.js",
+    "url": "assets/search-M3z3TWon.js",
     "revision": null
   }, {
-    "url": "assets/save-DrgB1v9r.js",
+    "url": "assets/save-DeT6Xhl4.js",
     "revision": null
   }, {
-    "url": "assets/repeat-CJQoVLJ2.js",
+    "url": "assets/repeat-Dtj-oMpF.js",
     "revision": null
   }, {
-    "url": "assets/play-CdLqNl5S.js",
+    "url": "assets/play-BgBx-ibH.js",
     "revision": null
   }, {
     "url": "assets/pdf.worker-B4IDxXWI.js",
@@ -163,325 +163,325 @@ define(['./workbox-2ae722a1'], (function (workbox) { 'use strict';
     "url": "assets/pdf-DfaD4CCm.js",
     "revision": null
   }, {
-    "url": "assets/package-BV-eXk_y.js",
+    "url": "assets/package-B0DJPpGE.js",
     "revision": null
   }, {
-    "url": "assets/minus-BFk4XshV.js",
+    "url": "assets/minus-LhfYcNwx.js",
     "revision": null
   }, {
-    "url": "assets/mail-4OafqD0O.js",
+    "url": "assets/mail-DG9S5FBj.js",
     "revision": null
   }, {
-    "url": "assets/list-checks-4BSJkCtF.js",
+    "url": "assets/list-checks-4D05jlr3.js",
     "revision": null
   }, {
-    "url": "assets/layers-CjBnek-E.js",
+    "url": "assets/layers-CR9j-p1e.js",
     "revision": null
   }, {
-    "url": "assets/isToday-DSOXGEfq.js",
+    "url": "assets/isToday-D3kIdBf2.js",
     "revision": null
   }, {
-    "url": "assets/isSameDay-DKsOF5D9.js",
+    "url": "assets/isSameDay-DbgqWGrV.js",
     "revision": null
   }, {
-    "url": "assets/isBefore-B0I0FHQa.js",
+    "url": "assets/isBefore-D5DXvUX8.js",
     "revision": null
   }, {
-    "url": "assets/index-Dx47JONB.css",
+    "url": "assets/index-DLQXjM9b.js",
     "revision": null
   }, {
-    "url": "assets/index-BHyztGfE.js",
+    "url": "assets/index-CS998A7Z.css",
     "revision": null
   }, {
-    "url": "assets/heart-pulse-BjY2NV4Z.js",
+    "url": "assets/heart-pulse-Dnud6SMb.js",
     "revision": null
   }, {
-    "url": "assets/heart-CNV2eY8l.js",
+    "url": "assets/heart-CLiQhHR7.js",
     "revision": null
   }, {
-    "url": "assets/graphicalItemSelectors-B4y--hnK.js",
+    "url": "assets/graphicalItemSelectors-Bo1At-Tl.js",
     "revision": null
   }, {
-    "url": "assets/getDay-Ddj89GDO.js",
+    "url": "assets/getDay-Dl3bHTy5.js",
     "revision": null
   }, {
-    "url": "assets/gauge-Dbnxdyxk.js",
+    "url": "assets/gauge-Dvu7zdb6.js",
     "revision": null
   }, {
-    "url": "assets/formatDistanceToNow-BJaebu_V.js",
+    "url": "assets/formatDistanceToNow-DsmoxPcb.js",
     "revision": null
   }, {
-    "url": "assets/flame-C0Jl72lw.js",
+    "url": "assets/flame-CyyCfAos.js",
     "revision": null
   }, {
-    "url": "assets/filter-Bh95XSaq.js",
+    "url": "assets/filter-CwCF2q15.js",
     "revision": null
   }, {
-    "url": "assets/file-up-CxgOlDQU.js",
+    "url": "assets/file-up-WZBwsa4x.js",
     "revision": null
   }, {
-    "url": "assets/file-text-DjYzWf2V.js",
+    "url": "assets/file-text-CMWicSXZ.js",
     "revision": null
   }, {
-    "url": "assets/eye-DvDVKoqt.js",
+    "url": "assets/eye-McWU8jjp.js",
     "revision": null
   }, {
-    "url": "assets/endOfMonth-B_vWOEXN.js",
+    "url": "assets/endOfMonth-J0Kz-dQP.js",
     "revision": null
   }, {
-    "url": "assets/eachDayOfInterval-uc2ZQwz3.js",
+    "url": "assets/eachDayOfInterval-CTPVxZGP.js",
     "revision": null
   }, {
-    "url": "assets/dollar-sign-CZ4rsNoX.js",
+    "url": "assets/dollar-sign-BICUm4Zy.js",
     "revision": null
   }, {
-    "url": "assets/dateUtils-BZL1sa8b.js",
+    "url": "assets/dateUtils-C95TvUfE.js",
     "revision": null
   }, {
-    "url": "assets/copy-BnJBdJZ0.js",
+    "url": "assets/copy-D7phHyWg.js",
     "revision": null
   }, {
-    "url": "assets/constructNow-Cs_1zGJ1.js",
+    "url": "assets/constructNow-DplBsIIN.js",
     "revision": null
   }, {
-    "url": "assets/clock-DOU4TPTD.js",
+    "url": "assets/clock-BLe391bH.js",
     "revision": null
   }, {
-    "url": "assets/circle-x-CvMZsBff.js",
+    "url": "assets/circle-x-DXbX43eM.js",
     "revision": null
   }, {
-    "url": "assets/circle-check-DncPNQGM.js",
+    "url": "assets/circle-check-CqVOUeqQ.js",
     "revision": null
   }, {
-    "url": "assets/circle-C8Vgb9fe.js",
+    "url": "assets/circle-DD_7i5Ok.js",
     "revision": null
   }, {
-    "url": "assets/chevron-up-DNHnShP0.js",
+    "url": "assets/chevron-up-tKzfO-CB.js",
     "revision": null
   }, {
-    "url": "assets/chevron-left-Ch-VLx1i.js",
+    "url": "assets/chevron-left-gT5Ooszw.js",
     "revision": null
   }, {
-    "url": "assets/camera-CL5vckQ0.js",
+    "url": "assets/camera-CkKlCNy2.js",
     "revision": null
   }, {
-    "url": "assets/calendar-plus-DrK3FElq.js",
+    "url": "assets/calendar-qOs871Jo.js",
     "revision": null
   }, {
-    "url": "assets/calendar-days-CaMOjVf-.js",
+    "url": "assets/calendar-plus-DZ5vbx_W.js",
     "revision": null
   }, {
-    "url": "assets/calendar-DB57t6Bu.js",
+    "url": "assets/calendar-days-BuE8i04J.js",
     "revision": null
   }, {
     "url": "assets/blogPosts-BsK7JfEK.js",
     "revision": null
   }, {
-    "url": "assets/bell-BeQ6upst.js",
+    "url": "assets/bell-B-gWx3l-.js",
     "revision": null
   }, {
-    "url": "assets/arrow-left-CG3bU-Vg.js",
+    "url": "assets/arrow-left-D2nEhdGU.js",
     "revision": null
   }, {
-    "url": "assets/archive-BOFjw6QF.js",
+    "url": "assets/archive-CZ0pHPbK.js",
     "revision": null
   }, {
-    "url": "assets/addWeeks-3ib6VUhH.js",
+    "url": "assets/addWeeks-BsRP9VUL.js",
     "revision": null
   }, {
-    "url": "assets/activity-BFhHUpJ7.js",
+    "url": "assets/activity-DiliWra-.js",
     "revision": null
   }, {
-    "url": "assets/WorkoutSessionPage-BHrNIleg.js",
+    "url": "assets/WorkoutSessionPage-BnBBVQnA.js",
     "revision": null
   }, {
-    "url": "assets/WorkoutLogViewer-9fz8nVRA.js",
+    "url": "assets/WorkoutLogViewer-Cj456txv.js",
     "revision": null
   }, {
-    "url": "assets/WorkoutHistoryPage-cVpFJ2AM.js",
+    "url": "assets/WorkoutHistoryPage-CVDx_eZk.js",
     "revision": null
   }, {
-    "url": "assets/WellnessCheckInsPage-BKiq4PKW.js",
+    "url": "assets/WellnessCheckInsPage-CiQDBRq4.js",
     "revision": null
   }, {
-    "url": "assets/WaitlistPage-BVs4wkPm.js",
+    "url": "assets/WaitlistPage-fylT4rqb.js",
     "revision": null
   }, {
-    "url": "assets/UpgradePromptModal-5j8Rw1g1.js",
+    "url": "assets/UpgradePromptModal-CMyXR2-u.js",
     "revision": null
   }, {
-    "url": "assets/TermsPage-DV8rCFFw.js",
+    "url": "assets/TermsPage-CiwotbwR.js",
     "revision": null
   }, {
-    "url": "assets/StripeResultModal-jlVH75cA.js",
+    "url": "assets/StripeResultModal-zCqb7OFU.js",
     "revision": null
   }, {
-    "url": "assets/Skeleton-Czmkydxf.js",
+    "url": "assets/Skeleton-CnZNgIKE.js",
     "revision": null
   }, {
-    "url": "assets/SettingsPage-Ctl0nePZ.js",
+    "url": "assets/SettingsPage-CHXx5RPj.js",
     "revision": null
   }, {
-    "url": "assets/SessionPunchcard-CvYAdgPj.js",
+    "url": "assets/SessionPunchcard-Ce5aiiR0.js",
     "revision": null
   }, {
-    "url": "assets/ScheduleSessionModal-Dgc1alo0.js",
+    "url": "assets/ScheduleSessionModal-DLhIZVY4.js",
     "revision": null
   }, {
-    "url": "assets/SchedulePage-CzrwBSvs.js",
+    "url": "assets/SchedulePage-CAmCT_Pd.js",
     "revision": null
   }, {
-    "url": "assets/ResourcesPage-Caif3d4H.js",
+    "url": "assets/ResourcesPage-ARtRdpc8.js",
     "revision": null
   }, {
-    "url": "assets/QuickCreateClientForm-Cw8w0tbT.js",
+    "url": "assets/QuickCreateClientForm-Dptaes59.js",
     "revision": null
   }, {
-    "url": "assets/ProgressPhotosPage-xx01h5sR.js",
+    "url": "assets/ProgressPhotosPage-CtvvH7nn.js",
     "revision": null
   }, {
-    "url": "assets/ProgressChartsPage-CqXmgGnP.js",
+    "url": "assets/ProgressChartsPage-D8DjaK8b.js",
     "revision": null
   }, {
-    "url": "assets/ProgrammingBlocksPage-BpS5dAxm.js",
+    "url": "assets/ProgrammingBlocksPage-CwV1n1Gl.js",
     "revision": null
   }, {
-    "url": "assets/ProgrammingBlockEditorPage-Ci7ciRtY.js",
+    "url": "assets/ProgrammingBlockEditorPage-DfyrCO8-.js",
     "revision": null
   }, {
-    "url": "assets/PrivacyPage-Bx7JJKxc.js",
+    "url": "assets/PrivacyPage-y5-NUe_u.js",
     "revision": null
   }, {
-    "url": "assets/OnboardingModal-zBH1b8yU.js",
+    "url": "assets/OnboardingModal-ArPbIR1g.js",
     "revision": null
   }, {
-    "url": "assets/NutritionPage-PRv9BC5e.js",
+    "url": "assets/NutritionPage-Dv-eXq3V.js",
     "revision": null
   }, {
-    "url": "assets/NotFoundPage-kYDTo4Bx.js",
+    "url": "assets/NotFoundPage-CcVXThnu.js",
     "revision": null
   }, {
-    "url": "assets/MessagesPage-ITEvAMCI.js",
+    "url": "assets/MessagesPage-lZeCoFk-.js",
     "revision": null
   }, {
-    "url": "assets/MessageThread-ByCOI4bH.js",
+    "url": "assets/MessageThread-D74k6DTd.js",
     "revision": null
   }, {
-    "url": "assets/ManagePackageModal-BCpJr52L.js",
+    "url": "assets/ManagePackageModal-DJQ21ROk.js",
     "revision": null
   }, {
-    "url": "assets/ManageClientModal-BAPTsA2a.js",
+    "url": "assets/ManageClientModal-B890of2W.js",
     "revision": null
   }, {
-    "url": "assets/LogSessionModal-BcjK5jKM.js",
+    "url": "assets/LogSessionModal-BWKqixQL.js",
     "revision": null
   }, {
-    "url": "assets/LineChart-Brpw-fqI.js",
+    "url": "assets/LineChart-lguEy9aY.js",
     "revision": null
   }, {
-    "url": "assets/InviteAcceptPage-BXZlYyeE.js",
+    "url": "assets/InviteAcceptPage-WurNULIK.js",
     "revision": null
   }, {
-    "url": "assets/HabitTrackingPage-1OUGxTPh.js",
+    "url": "assets/HabitTrackingPage-DdMHFDpl.js",
     "revision": null
   }, {
-    "url": "assets/GymsPage-BKIRBtOt.js",
+    "url": "assets/GymsPage-BnRFVpez.js",
     "revision": null
   }, {
-    "url": "assets/GymFeedPage-2XONn7wL.js",
+    "url": "assets/GymFeedPage-C1ZU4ZRB.js",
     "revision": null
   }, {
-    "url": "assets/GhostDrafterModal-COWY4o1R.js",
+    "url": "assets/GhostDrafterModal-Cv8jsO0H.js",
     "revision": null
   }, {
-    "url": "assets/ExportModal-CCrPm9L6.js",
+    "url": "assets/ExportModal-BuPloBIa.js",
     "revision": null
   }, {
-    "url": "assets/ExerciseLibraryPage-Bc2jVaoD.js",
+    "url": "assets/ExerciseLibraryPage-Bo4RqOD4.js",
     "revision": null
   }, {
-    "url": "assets/EmptyState-mEZ6WKmS.js",
+    "url": "assets/EmptyState-CIZCubC2.js",
     "revision": null
   }, {
-    "url": "assets/EmailLoginPage-Dgz0AFub.js",
+    "url": "assets/EmailLoginPage-CXl_e7lm.js",
     "revision": null
   }, {
-    "url": "assets/DinoQuizPage-lX_PKKzz.js",
+    "url": "assets/DinoQuizPage-DC1ja5RT.js",
     "revision": null
   }, {
-    "url": "assets/DayDetail-NS9qw-aw.js",
+    "url": "assets/DayDetail-Df6HvNNI.js",
     "revision": null
   }, {
-    "url": "assets/CsvClientImportModal-BvMk458B.js",
+    "url": "assets/CsvClientImportModal-CMA2O36e.js",
     "revision": null
   }, {
-    "url": "assets/ContactTimeline-BG6p-nr0.js",
+    "url": "assets/ContactTimeline-CEF-WbRE.js",
     "revision": null
   }, {
-    "url": "assets/CommandPalette-oi2jFJ8h.js",
+    "url": "assets/CommandPalette-DQIJ_pDb.js",
     "revision": null
   }, {
-    "url": "assets/CoachSettingsModal-DpO_heIc.js",
+    "url": "assets/CoachSettingsModal-jG_0Y88L.js",
     "revision": null
   }, {
-    "url": "assets/CoachMessagesPage-CTQZtb7X.js",
+    "url": "assets/CoachMessagesPage-DngKWgZG.js",
     "revision": null
   }, {
-    "url": "assets/ClientsListPage-CsVMH-Q8.js",
+    "url": "assets/ClientsListPage-B_Ohh63m.js",
     "revision": null
   }, {
-    "url": "assets/ClientRouteSync-Ds7SC6Mg.js",
+    "url": "assets/ClientRouteSync-rrqARb9w.js",
     "revision": null
   }, {
-    "url": "assets/ClientDashboard-Bwa-_bQs.js",
+    "url": "assets/ClientDashboard-BLNs-bHD.js",
     "revision": null
   }, {
-    "url": "assets/ChecklistPage-DezxWsUz.js",
+    "url": "assets/ChecklistPage-Dos_1P2O.js",
     "revision": null
   }, {
-    "url": "assets/Card-tUKCj_5C.js",
+    "url": "assets/Card-CyoNWCLk.js",
     "revision": null
   }, {
-    "url": "assets/Button-Cq9MFc9v.js",
+    "url": "assets/Button-BRYolhEK.js",
     "revision": null
   }, {
-    "url": "assets/BulkImportModal-CkujQ0nn.js",
+    "url": "assets/BulkImportModal-CrMywIUB.js",
     "revision": null
   }, {
-    "url": "assets/BlogPostPage-BhdhbI4M.js",
+    "url": "assets/BlogPostPage-BrKKIYSK.js",
     "revision": null
   }, {
-    "url": "assets/BlogListPage-DlCQQaxn.js",
+    "url": "assets/BlogListPage-BRWCL-c6.js",
     "revision": null
   }, {
-    "url": "assets/AthleteOnboardingModal-D-OO6uBi.js",
+    "url": "assets/AthleteOnboardingModal-fC8TvNHZ.js",
     "revision": null
   }, {
-    "url": "assets/AthleteLayout-C8tUC8nf.js",
+    "url": "assets/AthleteLayout-CbTTPHB4.js",
     "revision": null
   }, {
-    "url": "assets/AthleteGymPerformancePage-DkaXzhAV.js",
+    "url": "assets/AthleteGymPerformancePage-9SyQs5bA.js",
     "revision": null
   }, {
-    "url": "assets/AthleteDashboard-BME28IYm.js",
+    "url": "assets/AthleteDashboard-BGnEfjVY.js",
     "revision": null
   }, {
-    "url": "assets/AnnouncementsPage-EhVb65yW.js",
+    "url": "assets/AnnouncementsPage-BMN-XJz7.js",
     "revision": null
   }, {
-    "url": "assets/AnimatedModal-u3YMJ06x.js",
+    "url": "assets/AnimatedModal-D9LZYdr9.js",
     "revision": null
   }, {
-    "url": "assets/AnalyticsPanel-Rc0jibvI.js",
+    "url": "assets/AnalyticsPanel-Cosfejva.js",
     "revision": null
   }, {
-    "url": "assets/AnalyticsDashboardPage-COfmy_Ry.js",
+    "url": "assets/AnalyticsDashboardPage-Cq5kGmvF.js",
     "revision": null
   }, {
-    "url": "assets/AiPromptsPage-D1_AuKpi.js",
+    "url": "assets/AiPromptsPage-Dlw8sjqU.js",
     "revision": null
   }, {
-    "url": "assets/AiProgramModal-Bzl9A4uL.js",
+    "url": "assets/AiProgramModal-CiBVzZea.js",
     "revision": null
   }], {});
   workbox.cleanupOutdatedCaches();
