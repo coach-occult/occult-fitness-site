@@ -1,0 +1,1 @@
+import{r as o}from"./vendor-react-D490RTVu.js";function s(t,n){const e=o.useCallback(r=>{r.key==="Escape"&&(r.stopPropagation(),n())},[n]);o.useEffect(()=>{if(t)return document.addEventListener("keydown",e),()=>document.removeEventListener("keydown",e)},[t,e])}export{s as u};
